@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const prisma = require('./config/db');
+// const prisma = require('./config/db');
 require('dotenv').config();
 
 const app = express();
@@ -19,3 +19,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Serveur au port: ${PORT}`);
 })
+
+//import routes
+const entityRoutes = require('./routes/entity.routes');
+app.use('/api/entities', entityRoutes);
