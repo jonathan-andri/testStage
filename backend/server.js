@@ -1,7 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-// const prisma = require('./config/db');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import entityRoutes from './routes/entity.routes.js';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,11 +18,10 @@ app.get('/', (req, res) => {
     res.json({ message: 'fonctionne!!!' });
 });
 
-//lacement serveur
+//routes
+app.use('/api/entities', entityRoutes);
+
+//lancement serveur
 app.listen(PORT, () => {
     console.log(`Serveur au port: ${PORT}`);
-})
-
-//import routes
-const entityRoutes = require('./routes/entity.routes');
-app.use('/api/entities', entityRoutes);
+});

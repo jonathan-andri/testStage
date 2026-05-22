@@ -1,7 +1,7 @@
-const prisma = require('../config/db'); 
+import prisma from '../config/db.js';
 
 // 1. Créer une entité (POST)
-exports.createEntity = async (req, res) => {
+export const createEntity = async (req, res) => {
   try {
     const { name } = req.body;
     if (!name) return res.status(400).json({ error: "Le nom est obligatoire" });
@@ -14,7 +14,7 @@ exports.createEntity = async (req, res) => {
 };
 
 // 2. Récupérer toutes les entités (GET)
-exports.getAllEntities = async (req, res) => {
+export const getAllEntities = async (req, res) => {
   try {
     const entities = await prisma.entity.findMany();
     res.json(entities);
@@ -24,7 +24,7 @@ exports.getAllEntities = async (req, res) => {
 };
 
 // 3. Récupérer une entité par son ID (GET /:id)
-exports.getEntityById = async (req, res) => {
+export const getEntityById = async (req, res) => {
   try {
     const entity = await prisma.entity.findUnique({
       where: { id: parseInt(req.params.id) }
@@ -37,7 +37,7 @@ exports.getEntityById = async (req, res) => {
 };
 
 // 4. Mettre à jour une entité (PUT)
-exports.updateEntity = async (req, res) => {
+export const updateEntity = async (req, res) => {
   try {
     const { name } = req.body;
     const updatedEntity = await prisma.entity.update({
@@ -51,7 +51,7 @@ exports.updateEntity = async (req, res) => {
 };
 
 // 5. Supprimer une entité (DELETE)
-exports.deleteEntity = async (req, res) => {
+export const deleteEntity = async (req, res) => {
   try {
     await prisma.entity.delete({
       where: { id: parseInt(req.params.id) }
