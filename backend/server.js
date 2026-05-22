@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import entityRoutes from './routes/entity.routes.js';
+import userRoutes from './routes/user.routes.js';
+import userEntityRoutes from './routes/userEntity.routes.js';
 
 dotenv.config();
 
@@ -20,6 +22,9 @@ app.get('/', (req, res) => {
 
 //routes
 app.use('/api/entities', entityRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/user-entities', userEntityRoutes);
+
 
 //lancement serveur
 app.listen(PORT, () => {
