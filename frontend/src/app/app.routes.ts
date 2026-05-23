@@ -1,3 +1,10 @@
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+import { UsersComponent } from './components/user/user';
+import { EntitiesComponent } from './components/entity/entity';
+ 
+export const routes: Routes = [
+  { path: '',                  redirectTo: 'users', pathMatch: 'full' },
+  { path: 'users',             component: UsersComponent },
+  { path: 'entities',          component: EntitiesComponent }
+];
+ 

@@ -10,7 +10,7 @@ const API = environment.apiUrl + '/users';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getAllUser(): Observable<any[]> {
+  getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>(API);
   }
 
