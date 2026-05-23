@@ -14,6 +14,8 @@ export const createUser = async (req, res) => {
       data: { username, email, password: hashedPassword }
     });
 
+    console.log("1")
+
     const { password: _, ...userWithoutPassword } = newUser;
     res.status(201).json(userWithoutPassword);
   } catch (error) {
