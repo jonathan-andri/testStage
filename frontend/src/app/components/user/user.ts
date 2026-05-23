@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user-service/user.service';
 import { EntityService } from '../../services/entity-service/entity.service';
 import { UserEntityService } from '../../services/user-entity-service/user-entity.service';
-import { switchMap, of, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -221,7 +220,7 @@ export class UsersComponent implements OnInit {
 
   create() {
     this.userService.createUser({ ...this.form })
-      .subscribe(() => { this.resetForm(); this.load(); });
+    .subscribe(() => { this.resetForm(); this.load(); });
     this.userEntityService.createUserEntity({ userId: this.editingId!, entityId: this.selectedEntityIds }).subscribe(() => {
       this.resetForm(); this.load();
     }); 
