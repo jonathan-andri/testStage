@@ -32,3 +32,4 @@ export class UserEntityService {
     return this.http.delete(`${API}/${id}`);
   }   
 }
+
